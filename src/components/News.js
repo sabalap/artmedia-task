@@ -7,10 +7,9 @@ import firstSliderImg from "../assets/slider1-img.png";
 import secondSliderImg from "../assets/slider2-img.png";
 import thirdSliderImg from "../assets/slider3-img.png";
 import fourthSliderImg from "../assets/slider4-img.png";
-
-import prevArrow from "../assets/prev-arrow.svg";
 import nextArrow from "../assets/next-arrow.svg";
-const News = () => {
+
+const News = (props) => {
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
   const swiperRef = useRef(null);
   const breakpoints = {
@@ -84,7 +83,7 @@ const News = () => {
     },
   ];
   return (
-    <section className="news-section">
+    <section className="news-section" data-aos={props.anim}>
       <div className="news-section-content">
         <div className="news-header-container">
           <h1>News</h1>

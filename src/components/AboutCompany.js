@@ -1,9 +1,9 @@
 import aboutCompanyImg from "../assets/about-company-img.png";
 import aboutCompanyImgStroke from "../assets/about-company-img-stroke.png";
 
-const AboutCompany = () => {
+const AboutCompany = (props) => {
   return (
-    <section className="about-company">
+    <section className="about-company" data-aos={props.anim}>
       <div className="container">
         <div className="img-box">
           <img src={aboutCompanyImg} alt="" />

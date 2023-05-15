@@ -2,9 +2,9 @@ import serviceImg1 from "../assets/service-name1.svg";
 import serviceImg2 from "../assets/service-name2.svg";
 import serviceImg3 from "../assets/service-name3.svg";
 
-const Services = () => {
+const Services = (props) => {
   return (
-    <section>
+    <section data-aos={props.anim}>
       <div className="container">
         <div className="services-container">
           <h1>Services</h1>
