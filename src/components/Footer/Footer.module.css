@@ -1,0 +1,59 @@
+.logo-rights-container p {
+    font-family: montserrat-regular;
+    font-size: 16px;
+    color: #ffffff;
+    opacity: 0.7;
+    margin-top: 36px;
+  }
+  .footer-logo-container {
+    display: flex;
+    align-items: center;
+  }
+  .footer-logo-container h3 {
+    margin-left: 25px;
+    font-size: 22px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    font-family: montserrat-bold;
+    width: 120px;
+    transition: 0.3s;
+  }
+  .footer-logo-container:hover {
+    opacity: 0.6;
+  }
+  .textarea-container {
+    position: relative;
+  }
+  .textarea-container button::after {
+    content: "";
+    background-image: none;
+  }
+  .textarea-container button {
+    width: 74px;
+    background-color: #EF5555;
+    border: none;
+    font-family: montserrat-bold;
+    position: absolute;
+    bottom: 50px;
+    right: 20px;
+    margin-top: 0px;
+  }
+  @media (max-width:1600px) {
+    .logo-rights-container p {
+        font-size: 12px;
+    }
+    footer .footer-logo-container h3{
+        font-size: 20px;
+    }
+  }
+  @media(max-width:1024px) {
+    .logo-rights-container {
+        margin-bottom: 30px;
+      }
+  }
+  @media(max-width:568px) {
+    footer .footer-logo-container h3 {
+        font-size: 18px;
+        margin-left: 15px;
+    }
+  }

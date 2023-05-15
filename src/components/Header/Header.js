@@ -1,5 +1,6 @@
 import { useState } from "react";
-import logo from "../assets/logo.svg";
+import classes from "./Header.module.css";
+import logo from "../../assets/logo.svg";
 const Header = () => {
   const [active, setActive] = useState(false);
   const handleClick = () => {
@@ -13,13 +14,15 @@ const Header = () => {
   }
   return (
     <header>
-      <div className="container header-container">
+      <div className={`container ${classes["header-container"]}`}>
         <nav>
-          <a href="#home" className="logo-container">
-            <img className="logo" src={logo} alt="Company Logo" />
-            <h3 className="logo-text">Company Name</h3>
+          <a href="#home" className={classes["logo-container"]}>
+            <img className={classes.logo} src={logo} alt="Company Logo" />
+            <h3 className={classes["logo-text"]}>Company Name</h3>
           </a>
-          <div className={active ? "nav-menu active" : "nav-menu"}>
+          <div
+            className={`${classes["nav-menu"]} ${active ? classes.active : ""}`}
+          >
             <ul>
               <li>
                 <a href="#home">Home</a>
@@ -40,18 +43,18 @@ const Header = () => {
             <input placeholder="Search keyword ..." type="search" />
           </div>
           <div
-            className={active ? "hamburger active" : "hamburger"}
+            className={`${classes.hamburger} ${active ? classes.active : ""}`}
             onClick={handleClick}
           >
-            <span className="bar"></span>
-            <span className="bar"></span>
-            <span className="bar"></span>
+            <span className={classes.bar}></span>
+            <span className={classes.bar}></span>
+            <span className={classes.bar}></span>
           </div>
         </nav>
       </div>
-      <div className="header-img-container">
+      <div className={classes["header-img-container"]}>
         <div className="container">
-          <div className="header-text-container">
+          <div className={classes["header-text-container"]}>
             <h1>Company's First Service Title</h1>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do

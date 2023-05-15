@@ -1,12 +1,13 @@
-import footerLogo from "../assets/footer-logo.svg";
-import instagramIcon from "../assets/instagram-icon.svg";
-import facebookIcon from "../assets/facebook-icon.svg";
+import classes from "./Footer.module.css";
+import footerLogo from "../../assets/footer-logo.svg";
+import instagramIcon from "../../assets/instagram-icon.svg";
+import facebookIcon from "../../assets/facebook-icon.svg";
 const Footer = () => {
   return (
     <footer>
       <div className="container">
-        <div className="logo-rights-container">
-          <a href="#home" className="footer-logo-container">
+        <div className={classes["logo-rights-container"]}>
+          <a href="#home" className={classes["footer-logo-container"]}>
             <img src={footerLogo} alt="footer company logo" />
             <h3>Company Name</h3>
           </a>
@@ -45,7 +46,7 @@ const Footer = () => {
             <input type="text" placeholder="Name" />
             <input type="email" placeholder="Email" />
           </div>
-          <div className="textarea-container">
+          <div className={classes["textarea-container"]}>
             <textarea
               id="textarea"
               placeholder="Text"

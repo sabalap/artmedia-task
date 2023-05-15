@@ -1,15 +1,16 @@
-import aboutCompanyImg from "../assets/about-company-img.png";
-import aboutCompanyImgFrame from "../assets/about-company-img-frame.png";
+import aboutCompanyImg from "../../assets/about-company-img.png";
+import aboutCompanyImgFrame from "../../assets/about-company-img-frame.png";
+import classes from "./AboutCompany.module.css";
 
 const AboutCompany = (props) => {
   return (
-    <section className="about-company" data-aos={props.anim}>
-      <div className="container">
-        <div className="img-box">
+    <section className={classes["about-company"]} data-aos={props.anim}>
+      <div className={`container ${classes.container}`}>
+        <div className={classes["img-box"]}>
           <img src={aboutCompanyImg} alt="about company" />
           <img src={aboutCompanyImgFrame} alt="about company frame" />
         </div>
-        <article className="about-company-text">
+        <article className={classes["about-company-text"]}>
           <h1>About Company</h1>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
