@@ -15,10 +15,10 @@ const Header = () => {
     <header>
       <div className="container header-container">
         <nav>
-          <div className="logo-container">
+          <a href="#home" className="logo-container">
             <img className="logo" src={logo} alt="Company Logo" />
             <h3 className="logo-text">Company Name</h3>
-          </div>
+          </a>
           <div className={active ? "nav-menu active" : "nav-menu"}>
             <ul>
               <li>

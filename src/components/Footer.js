@@ -6,13 +6,10 @@ const Footer = () => {
     <footer>
       <div className="container">
         <div className="logo-rights-container">
-          <div className="footer-logo-container">
+          <a href="#home" className="footer-logo-container">
             <img src={footerLogo} alt="footer company logo" />
-            <h3>
-              Company <br />
-              Name
-            </h3>
-          </div>
+            <h3>Company Name</h3>
+          </a>
           <p>© 2023 All Rights Reserved</p>
         </div>
         <nav>

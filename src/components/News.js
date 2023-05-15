@@ -1,7 +1,6 @@
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useRef, useState } from "react";
-import arrow from "../assets/button-arrow.svg";
 import "swiper/css";
 import "swiper/css/navigation";
 import firstSliderImg from "../assets/slider1-img.png";
@@ -59,98 +58,101 @@ const News = () => {
     },
   };
 
-  const handleSlideChange = (swiper) => {
+  const activeSlideHandler = (swiper) => {
     setActiveSlideIndex(swiper.activeIndex);
   };
-  const contents = [
+  const slides = [
     {
       image: firstSliderImg,
-      text: "There are many variations of passages",
+      title: "There are many variations of passages",
       date: "22 April 2023",
     },
     {
       image: secondSliderImg,
-      text: "The point of using Lorem Ipsum",
+      title: "The point of using Lorem Ipsum",
       date: "20 April 2023",
     },
     {
       image: thirdSliderImg,
-      text: "I must explain to you how all this mistaken idea",
+      title: "I must explain to you how all this mistaken idea",
       date: "19 April 2023",
     },
     {
       image: fourthSliderImg,
-      text: "On the other hand, we denounce with righteous indignation",
+      title: "On the other hand, we denounce with righteous indignation",
       date: "15 April 2023",
     },
   ];
   return (
     <section className="news-section">
       <div className="news-section-content">
-        <h1>News</h1>
-        <div className="arrows-container">
-          <button
-            className={`prev-button ${
-              activeSlideIndex === 0 ? "disable" : "active"
-            }`}
-          >
-            <img src={prevArrow} alt="previous arrow" />
-          </button>
-          <button
-            className={`next-button ${
-              activeSlideIndex === 3 ? "disable" : "active"
-            }`}
-          >
-            <img src={nextArrow} alt="next arrow" />
-          </button>
+        <div className="news-header-container">
+          <h1>News</h1>
+          <div className="arrows-container">
+            <button
+              className={`prev-button ${
+                activeSlideIndex === 0 ? "disable" : "active"
+              }`}
+            >
+              <img src={nextArrow} alt="previous arrow" />
+            </button>
+            <button
+              className={`next-button ${
+                activeSlideIndex === 3 ? "disable" : "active"
+              }`}
+            >
+              <img src={nextArrow} alt="next arrow" />
+            </button>
+          </div>
         </div>
-      </div>
-      <div className="slider-container">
-        <Swiper
-          ref={swiperRef}
-          modules={[Navigation, Pagination, Scrollbar, A11y]}
-          spaceBetween={-1200}
-          slidesPerView={1}
-          breakpoints={breakpoints}
-          navigation={{
-            prevEl: ".prev-button",
-            nextEl: ".next-button",
-          }}
-          onSlideChange={handleSlideChange}
-          className="slider-wrapper"
-        >
-          {contents.map((content, index) => {
-            return (
-              <SwiperSlide className="slide-container" key={index}>
-                <div className="content-container">
-                  <img
-                    className="slider-img"
-                    src={content.image}
-                    alt={`slide ${index}`}
-                  />
-                  <div className="slide">
-                    <div
-                      className={`${
-                        index === contents.length - 1
-                          ? "slide-container last-slide"
-                          : "slide-container"
-                      }`}
-                    >
-                      <h1 className="slide-title">{content.text}</h1>
-                      <p className="">{content.date}</p>
-                      <button>See more</button>
+        <div className="slider-container">
+          <Swiper
+            ref={swiperRef}
+            modules={[Navigation, Pagination, Scrollbar, A11y]}
+            spaceBetween={-1200}
+            slidesPerView={1}
+            breakpoints={breakpoints}
+            navigation={{
+              prevEl: ".prev-button",
+              nextEl: ".next-button",
+            }}
+            onSlideChange={activeSlideHandler}
+            className="slider-wrapper"
+          >
+            {slides.map((slide, index) => {
+              return (
+                <SwiperSlide className="slide-container" key={index}>
+                  <div className="content-container">
+                    <img
+                      className="slider-img"
+                      src={slide.image}
+                      alt={`slide ${index}`}
+                    />
+                    <div className="slide-linear"></div>
+                    <div className="slide">
+                      <div
+                        className={`${
+                          index === slides.length - 1
+                            ? "slide-container last-slide"
+                            : "slide-container"
+                        }`}
+                      >
+                        <h1 className="slide-title">{slide.title}</h1>
+                        <p className="">{slide.date}</p>
+                        <button>See more</button>
+                      </div>
                     </div>
                   </div>
-                </div>
-                {activeSlideIndex === index ? (
-                  <div className="active-slide" />
-                ) : (
-                  ""
-                )}
-              </SwiperSlide>
-            );
-          })}
-        </Swiper>
+                  {activeSlideIndex === index ? (
+                    <div className="active-slide" />
+                  ) : (
+                    ""
+                  )}
+                </SwiperSlide>
+              );
+            })}
+          </Swiper>
+        </div>
       </div>
     </section>
   );

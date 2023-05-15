@@ -131,6 +131,10 @@ header nav {
   font-size: 22px;
   text-transform: uppercase;
   width: 120px;
+  transition: 0.3s;
+}
+.logo-container:hover .logo-text{
+  color: #EF5555;
 }
 .nav-menu {
   display: flex;
@@ -146,9 +150,25 @@ header ul li a{
   font-size: 18px;
   color: #2B3252;
   font-family: montserrat-bold;
+  transition: 0.3s;
+  border-bottom: 1px solid transparent;
+  position: relative;
 }
-header ul li:first-of-type a{
+header ul li a::after{
+  content: "";
+  background-color: #EF5555;
+  width: 0px;
+  height: 2px;
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: 0.3s;
+}
+header ul li a:hover,
+header ul li a:hover::after {
   color: #EF5555;
+  width: 18px;
 }
 header input {
   width: 210px;
@@ -219,8 +239,19 @@ footer button{
   padding: 10px 14px 10px 18px;
   text-align: left;
   cursor: pointer;
+  transition: 0.3s;
 }
-button::after {
+footer button:hover {
+  background-color: #ffffff;
+  color: #EF5555;
+}
+header button:hover,
+.slide-container button:hover {
+  background-color: #2B3252;;
+  color: #ffffff;
+}
+.header-img-container button::after,
+.slide-container button::after{
   content: "";
   position: absolute;
   top: 50%;
@@ -229,6 +260,11 @@ button::after {
   width: 16px;
   height: 14px;
   background-image: url(./assets/button-arrow.svg);
+  transition: 0.3s;
+}
+header button:hover::after,
+.slide-container button:hover::after {
+  right: 15px;
 }
 .services-container {
   margin-top: 84px;
@@ -247,6 +283,13 @@ button::after {
   display: flex;
   justify-content: space-between;
 }
+.services img {
+  transition: 0.3s;
+  cursor: pointer;
+}
+.services img:hover {
+  transform: scale(1.2);
+}
 .service {
   width: 440px;
   text-align: center;
@@ -262,11 +305,6 @@ button::after {
   padding-top: 95px;
   padding-bottom: 140px;
 }
-.news-header-container {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 95px;
-}
 .news-header-container h1 {
   font-size: 40px;
   font-family: montserrat-bold;
@@ -274,19 +312,26 @@ button::after {
   text-transform: uppercase;
 }
 .arrows-container {
+  justify-content: space-between;
   width: 92px;
   display: flex;
-  justify-content: space-between;
 }
 .slider-container {
-  overflow: hidden;
+  justify-items: end;
+  justify-content: flex-end;
+  align-items: flex-end;
+  width: 100vw;
+  display: flex;
 }
 
 .slider-wrapper {
-  display: flex; 
-  justify-content: center; 
-  align-items: center; 
-  width: 1420px;
+  width: 1675px;
+  margin-top: 50px;
+  margin-left: 250px !important;
+  justify-content: center;
+  align-items: center;
+  display: flex !important;
+  margin-right: 0 !important;
 }
 
 .slide-container {
@@ -296,19 +341,23 @@ button::after {
   gap: 0.75rem; 
   width: 360px;
 }
-.slide-title {
-  color: #ffffff; 
-  font-weight: 700; 
-  text-transform: uppercase; 
-  width: 100%; 
-}
 .news-section-content {
-  display: flex; 
-  justify-content: space-between; 
-  max-width: 1420px;  
-  padding: 0px 0px 87px;
+  justify-content: flex-end;
+  align-items: flex-end;
+  flex-direction: column;
+  width: 100%;
+  display: flex;
 }
-.news-section-content h1 {
+.news-header-container {
+  padding-right: 248px;
+  padding-left: 247px;
+  align-self: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  display: flex;
+}
+
+.news-header-container h1 {
   font-family: montserrat-bold;
   font-size: 40px;
   line-height: 49px;
@@ -319,6 +368,12 @@ button::after {
   border: none;
   background-color: transparent;
   cursor: pointer;
+}
+.arrows-container button:first-of-type {
+  transform: rotate(180deg);
+}
+.arrows-container button:last-of-type {
+  margin-top: 6px;
 }
 .news-section-content button.active {
   opacity: 1;
@@ -333,22 +388,25 @@ button::after {
   margin-left: 10px;
 }
 .content-container{
-  position: relative; 
-  background-position: center; 
-  background-size: cover; 
-  background-image: linear-gradient(205.96deg, rgba(67, 26, 26, 0) -7.14%, #431A1A 121.86%); 
-  background-color: transparent; 
   width: 440px;
   height: 560px;
+  max-width: 100%;
+  background-position: center;
+  background-size: cover;
+  position: relative; 
+  background-color: transparent; 
 }
 .slider-img {
   object-fit: cover; 
   position: absolute; 
   width: 100%; 
   height: 100%; 
-  mix-blend-mode: overlay; 
-  filter: brightness(90%);
-  filter: contrast(75%);
+}
+.slide-linear {
+  background-image: linear-gradient(205.96deg, rgba(67, 26, 26, 0) -7.14%, #431A1A 121.86%);
+  width: 100%;
+  height: 100%;
+  position: absolute;
 }
 .slide {
   display: flex; 
@@ -363,6 +421,8 @@ button::after {
   font-size: 34px;
   line-height: 41px;
   margin-bottom: 18px;
+  z-index: 5;
+  color: #ffffff;
 }
 .last-slide {
   margin-top: -82px;
@@ -377,6 +437,8 @@ button::after {
 }
 .slide button {
   margin-top: 0px;
+  position: absolute;
+  bottom: 40px;
 }
 .arrows-container img {
   width: 32px;
@@ -475,6 +537,14 @@ button::after {
   background: transparent;
   border: 1px solid #EF5555;
   color: #EF5555;
+  transition: 0.3s;
+}
+.about-company-text button:hover {
+  background-color: #EF5555;
+  color: #ffffff;
+}
+.about-company-text button:hover::after {
+  background-image: url(./assets/button-arrow.svg);
 }
 .about-company-text button::after {
   content: "";
@@ -485,6 +555,7 @@ button::after {
   width: 16px;
   height: 14px;
   background-image: url(./assets/about-company-arrow.svg);
+  transition: 0.3s;
 }
 footer {
   background: #2B3252;
@@ -500,6 +571,11 @@ footer {
   text-transform: uppercase;
   color: #FFFFFF;
   font-family: montserrat-bold;
+  width: 120px;
+  transition: 0.3s;
+}
+.footer-logo-container:hover {
+  opacity: 0.6;
 }
 .logo-rights-container p {
   font-family: montserrat-regular;
@@ -513,6 +589,10 @@ footer a {
   font-size: 18px;
   color: #ffffff;
   line-height: 22px;
+  transition: 0.3s;
+}
+footer a:hover {
+  color: #EF5555;
 }
 footer nav ul:first-of-type {
   display: flex;
@@ -525,6 +605,12 @@ footer nav ul:last-of-type {
   width: 82px;
   justify-content: space-between;
   margin-top: 35px;
+}
+footer nav ul:last-of-type li {
+  transition: 0.2s ease;
+}
+footer nav ul:last-of-type li:hover{
+  transform: scale(1.1) rotate(360deg);
 }
 footer .container {
   display: flex;
@@ -607,11 +693,11 @@ footer form > div:first-of-type {
   .header-container .logo-text {
       font-size: 20px;
   }
-  .slider-container button {
-      top: 340px;
-  }
   header ul {
       margin-right: 140px;
+  }
+  .slide {
+    padding-right: 20px;
   }
   .header-container nav a {
       font-size: 16px;
@@ -620,6 +706,23 @@ footer form > div:first-of-type {
       padding-bottom: 0px;
       background-position: right bottom 8px;
       width: 180px;
+  }
+  .news-header-container {
+    padding: 0px 40px;
+    max-width: 1420px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .content-container {
+    height: 460px;
+    width: 340px;
+  }
+  .active-slide {
+    width: 320px;
+  }
+  .slide .slide-title {
+    font-size: 30px;
+    margin-top: 135px;
   }
   .container {
       max-width: 1420px;
@@ -640,27 +743,21 @@ footer form > div:first-of-type {
       display: flex;
       overflow: hidden;
   }
-  /* .fourth-slider {
-      display: none;
-  } */
   .slider-container {
-    width: 1420px;
+    max-width: 1420px;
+    width: 100%;
     margin: 0 auto;
   }
   .slider-container > div {
     margin-left: 0px !important;
     width: 100%;
+    padding: 0px 40px;
   }
   .slider {
       width: 340px;
       height: 460px;
       position: relative;
   }
-  .fourth-slider {
-      /* width: 200px; */
-      overflow: hidden;
-  }
-
   .slider h2 {
       font-size: 28px;
       width: 280px;
@@ -682,9 +779,6 @@ footer form > div:first-of-type {
   .news-section {
       padding-top: 75px;
       padding-bottom: 120px;
-  }
-  .news-header-container {
-      margin-bottom: 50px;
   }
   .about-company-text h1 {
       font-size: 34px;
@@ -807,6 +901,18 @@ footer form > div:first-of-type {
       margin-top: 270px;
       font-size: 52px;
   }
+  .content-container {
+    margin: 0 auto;
+  }
+  footer nav ul:first-of-type {
+    flex-direction: column;
+  }
+  footer nav ul:first-of-type li {
+    margin-bottom: 20px;
+  }
+  .active-slide {
+    margin: 0 auto;
+  }
   .services {
       flex-direction: column;
       align-items: center;
@@ -817,6 +923,12 @@ footer form > div:first-of-type {
   .services-container {
       padding-bottom: 0px;
   }
+  footer form > div:first-of-type {
+    flex-direction: column;
+  }
+  footer form > div:first-of-type input {
+    width: 100%;
+  }
 }
 @media (max-width:568px) {
   .about-company .img-box {
@@ -825,6 +937,26 @@ footer form > div:first-of-type {
   }
   .about-company .img-box img{
       width: 100%;
+      height: 100%;
+  }
+  .content-container {
+    width: 420px;
+    height: 380px;
+  }
+  .active-slide {
+    width: 340px
+  }
+  .slide .slide-title {
+    font-size: 26px;
+    margin-top: 100px;
+    margin-bottom: 0px;
+  }
+  .slide p {
+    position: absolute;
+    bottom: 60px;
+  }
+  .slide button {
+    bottom: 20px;
   }
   .about-company-text {
       max-width: 100%;
@@ -867,5 +999,21 @@ footer form > div:first-of-type {
   }
   .container {
       padding: 0px 20px;
+  }
+}
+@media (max-width:414px) {
+  .slide .slide-title {
+    margin-top: 70px;
+    margin-bottom: 0px;
+    font-size: 24px;
+  }
+  .slide button {
+    bottom: 20px;
+  }
+  .active-slide {
+    width: 250px
+  }
+  footer form {
+    width: 280px;
   }
 }
