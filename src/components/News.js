@@ -11,7 +11,7 @@ import nextArrow from "../assets/next-arrow.svg";
 
 const News = (props) => {
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
-  const swiperRef = useRef(null);
+  const swiperSlideRef = useRef(null);
   const breakpoints = {
     300: {
       spaceBetween: 100,
@@ -57,9 +57,6 @@ const News = (props) => {
     },
   };
 
-  const activeSlideHandler = (swiper) => {
-    setActiveSlideIndex(swiper.activeIndex);
-  };
   const slides = [
     {
       image: firstSliderImg,
@@ -82,6 +79,11 @@ const News = (props) => {
       date: "15 April 2023",
     },
   ];
+
+  const activeSlideHandler = (swiper) => {
+    setActiveSlideIndex(swiper.activeIndex);
+  };
+
   return (
     <section className="news-section" data-aos={props.anim}>
       <div className="news-section-content">
@@ -106,17 +108,17 @@ const News = (props) => {
         </div>
         <div className="slider-container">
           <Swiper
-            ref={swiperRef}
-            modules={[Navigation, Pagination, Scrollbar, A11y]}
-            spaceBetween={-1200}
+            className="slider-wrapper"
+            ref={swiperSlideRef}
             slidesPerView={1}
+            spaceBetween={-1200}
             breakpoints={breakpoints}
+            modules={[Navigation, Pagination, Scrollbar, A11y]}
             navigation={{
               prevEl: ".prev-button",
               nextEl: ".next-button",
             }}
             onSlideChange={activeSlideHandler}
-            className="slider-wrapper"
           >
             {slides.map((slide, index) => {
               return (
